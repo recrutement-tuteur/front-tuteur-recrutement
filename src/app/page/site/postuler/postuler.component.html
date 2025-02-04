@@ -1,0 +1,67 @@
+<div class="bg-gray-100 text-gray-800">
+
+    <!-- Conteneur Principal -->
+    <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-10 ">
+        
+        <!-- En-tête -->
+        <h1 class="text-2xl font-semibold text-center text-[#10B981] ">
+            Postuler à l'Offre de Recrutement
+        </h1>
+        <p class="text-gray-600 text-center mt-2">Remplissez le formulaire ci-dessous pour soumettre votre candidature.</p>
+
+        <!-- Formulaire de Candidature -->
+        <form action="#" method="POST" enctype="multipart/form-data" class="mt-6">
+
+            <!-- Diplôme -->
+            <div class="mb-4">
+                <label class="block font-semibold">Diplôme le plus élevé</label>
+                <select name="diplome" required class="w-full px-4 py-2 border focus:ring-1 focus:ring-[#10B981] focus:border-[#10B981] focus:outline-none">
+                    <option value="">Sélectionnez...</option>
+                    <option value="master">Master</option>
+                    <option value="doctorat">Doctorat</option>
+                    <option value="licence">Licence</option>
+                </select>
+            </div>
+
+            <!-- Expérience -->
+            <div class="mb-4">
+                <label class="block font-semibold">Expérience en enseignement (en années)</label>
+                <input type="number" name="experience" min="0" required class="w-full px-4 py-2 border focus:ring-1 focus:ring-[#10B981] focus:border-[#10B981] focus:outline-none">
+            </div>
+
+            <!-- Champ pour le CV -->
+            <div class="mb-4">
+                <label class="block font-semibold">Téléverser votre CV (PDF)</label>
+                <input type="file" name="cv" accept=".pdf" required class="w-full px-4 py-2 border focus:ring-1 focus:ring-[#10B981] focus:border-[#10B981] focus:outline-none">
+            </div>
+
+            <!-- Champ pour la Lettre de Motivation -->
+            <div class="mb-4">
+                <label class="block font-semibold">Lettre de Motivation (PDF)</label>
+                <input type="file" name="motivation" accept=".pdf" required class="w-full px-4 py-2 border focus:ring-1 focus:ring-[#10B981] focus:border-[#10B981] focus:outline-none">
+            </div>
+
+            <!-- Champ pour les Diplômes -->
+            <div class="mb-4">
+                <label class="block font-semibold">Justificatifs de Diplômes (PDF)</label>
+                <input type="file" name="diplomes" accept=".pdf" required class="w-full px-4 py-2 border focus:ring-1 focus:ring-[#10B981] focus:border-[#10B981] focus:outline-none">
+            </div>
+
+            <!-- Champ pour Message -->
+            <div class="mb-4">
+                <label class="block font-semibold">Message (facultatif)</label>
+                <textarea name="message" rows="4" class="w-full px-4 py-2 border focus:ring-1 focus:ring-[#10B981] focus:border-[#10B981] focus:outline-none"></textarea>
+            </div>
+
+            <!-- Bouton Soumettre -->
+            <div class="text-center">
+                <button type="submit" class="bg-[#10B981] text-white px-6 py-2 font-semibold hover:bg-[#10B981] ">
+                    Soumettre ma Candidature
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

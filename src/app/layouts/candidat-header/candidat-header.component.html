@@ -1,0 +1,35 @@
+<!-- header.component.html -->
+<div class="w-full" style="margin: auto;">
+
+    <nav class="navbarMain navbar flex justify-between items-center px-6 py-1 text-white">
+        <div>
+            <img src="logo-UNCHK.png" alt="COLIER Logo" class="h-12">
+        </div>
+
+        <button class="menu-toggle" aria-label="Toggle menu" [attr.aria-expanded]="menuActive.toString()" (click)="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <ul class="menu">
+            <div class="flex space-x-4">
+                <a href="/" class="hover:underline">Accueil</a>
+                <a href="annonces" class="hover:underline">Annonces de recrutement</a>
+                <a href="contact" class="hover:underline">Contact</a>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="login" class="bg-blue-500 text-white px-4 py-2 text-sm rounded">Se connecter</a>
+            </div>
+        </ul>
+
+        <ul class="mobile-menu" [class.active]="menuActive" id="mobile-menu">
+            <a href="#" class="hover:underline">Accueil</a>
+            <a href="annonces" class="hover:underline">Annonces de recrutement</a>
+            <a href="contact" class="hover:underline">Contact</a>
+            <div class="flex items-center space-x-3">
+                <a href="login" class="bg-blue-500 text-white px-4 py-2 text-sm rounded">Se connecter</a>
+            </div>
+        </ul>
+    </nav>
+</div>
