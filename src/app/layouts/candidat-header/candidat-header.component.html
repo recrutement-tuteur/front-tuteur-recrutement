@@ -1,12 +1,12 @@
-<!-- header.component.html -->
 <div class="w-full" style="margin: auto;">
 
     <nav class="navbarMain navbar flex justify-between items-center px-6 py-1 text-white">
-        <div>
+        <a href="/">
             <img src="logo-UNCHK.png" alt="COLIER Logo" class="h-12">
-        </div>
+        </a>
 
-        <button class="menu-toggle" aria-label="Toggle menu" [attr.aria-expanded]="menuActive.toString()" (click)="toggleMenu()">
+        <button class="menu-toggle" aria-label="Toggle menu" [attr.aria-expanded]="menuActive.toString()"
+            (click)="toggleMenu()">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
@@ -17,9 +17,33 @@
                 <a href="/" class="hover:underline">Accueil</a>
                 <a href="annonces" class="hover:underline">Annonces de recrutement</a>
                 <a href="contact" class="hover:underline">Contact</a>
+                <!-- Vérifier l'authentification avant d'afficher "Mes candidatures" -->
+                <a *ngIf="isAuthenticated()" href="my-candidatures" class="hover:underline">Mes candidatures</a>
             </div>
-            <div class="flex items-center space-x-3">
+            <!-- Afficher le bouton de connexion si l'utilisateur n'est pas authentifié -->
+            <div *ngIf="!isAuthenticated()" class="flex items-center space-x-3">
                 <a href="login" class="bg-blue-500 text-white px-4 py-2 text-sm rounded">Se connecter</a>
+            </div>
+
+            <!-- Menu Profil (visible uniquement si authentifié) -->
+            <div *ngIf="isAuthenticated()" class="relative profilDrop">
+                <button (click)="toggleDropdown()"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none">
+                    Profil
+                </button>
+
+                <!-- Menu déroulant -->
+                <div *ngIf="isDropdownOpen"
+                    class="absolute z-40 right-0 mt-2 w-48 bg-[#00a572] border border-gray-200 rounded-md shadow-lg">
+                    <ul class="py-2">
+                        <li>
+                            <a href="profil" class="block px-4 py-2 text-black hover:bg-[#ffffff3d]">Profil</a>
+                        </li>
+                        <li>
+                            <a (click)="logout()" class="block px-4 py-2 text-black hover:bg-[#ffffff3d]">Déconnexion</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </ul>
 
@@ -27,8 +51,29 @@
             <a href="#" class="hover:underline">Accueil</a>
             <a href="annonces" class="hover:underline">Annonces de recrutement</a>
             <a href="contact" class="hover:underline">Contact</a>
-            <div class="flex items-center space-x-3">
+            <!-- Vérifier l'authentification avant d'afficher "Mes candidatures" -->
+            <a *ngIf="isAuthenticated()" href="my-candidatures" class="hover:underline">Mes candidatures</a>
+            <div *ngIf="!isAuthenticated()" class="flex items-center space-x-3">
                 <a href="login" class="bg-blue-500 text-white px-4 py-2 text-sm rounded">Se connecter</a>
+            </div>
+            <div *ngIf="isAuthenticated()" class="relative profilDrop">
+                <button (click)="toggleDropdown()"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none">
+                    Profil
+                </button>
+
+                <!-- Menu déroulant -->
+                <div *ngIf="isDropdownOpen"
+                    class="absolute z-40 right-0 mt-2 w-48 bg-[#00a572] border border-gray-200 rounded-md shadow-lg">
+                    <ul class="py-2">
+                        <li>
+                            <a href="profil" class="block px-4 py-2 text-black hover:bg-[#ffffff3d]">Profil</a>
+                        </li>
+                        <li>
+                            <a (click)="logout()" class="block px-4 py-2 text-black hover:bg-[#ffffff3d]">Déconnexion</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </ul>
     </nav>

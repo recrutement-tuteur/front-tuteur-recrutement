@@ -3,8 +3,18 @@ import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
 import { provideHttpClient } from '@angular/common/http';
-
+import { provideAnimations } from '@angular/platform-browser/animations'; // Importe provideAnimations
+import { provideToastr } from 'ngx-toastr'; // Importe provideToastr
 
 bootstrapApplication(AppComponent, {
-  providers: [provideRouter(routes),provideHttpClient()]
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(),
+    provideAnimations(), // Ajoute provideAnimations
+    provideToastr({  // Ajoute provideToastr et configure les options
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
+  ]
 }).catch(err => console.error(err));

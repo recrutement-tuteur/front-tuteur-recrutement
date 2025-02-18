@@ -59,7 +59,7 @@
 }
 
 .navbarMain {
-    background-color: #10B981 !important;
+    background-color: #ffffff !important;
     height: 76px;
     position: relative;
 }
@@ -83,6 +83,7 @@
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+    color : black !important;
 
 }
 
@@ -169,7 +170,7 @@
 .menu-toggle .bar {
     width: 25px;
     height: 3px;
-    background-color: white;
+    background-color: rgb(58, 58, 58);
 }
 @media (max-width: 580px) {
     .menu-top {

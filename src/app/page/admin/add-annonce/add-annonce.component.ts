@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';  // Service pour récupérer les années académiques
+import { Component, OnInit, signal } from '@angular/core';  // Service pour récupérer les années académiques
 import { Router } from '@angular/router';
 import { AnnoncesService } from '../../../services/annonces.service';
 import { AnneeAcademiqueService } from '../../../services/annee-academique.service';
@@ -11,7 +11,7 @@ import { AnneeAcademiqueService } from '../../../services/annee-academique.servi
   styleUrls: ['./add-annonce.component.css']
 })
 export class AddAnnonceComponent implements OnInit {
-  
+
   annonce = {
     titre: '',
     description: '',
@@ -24,26 +24,28 @@ export class AddAnnonceComponent implements OnInit {
   anneesAcademiques = []; // Liste des années académiques
 
   constructor(
-    private annoncesService: AnnoncesService, 
-    private anneeAcademiqueService: AnneeAcademiqueService, 
+    private AnneeAcademiqueService: AnneeAcademiqueService,
+    private annoncesService: AnnoncesService,
     private router: Router
-  ) {}
+  ) { }
 
-  ngOnInit(): void {
-      
+  async getAnneeAcademique() {
+    return await this.AnneeAcademiqueService.getAllAnneesAcademiques()
   }
 
-  // ngOnInit(): void {
-  //   // Récupérer les années académiques pour le champ select
-  //   this.anneeAcademiqueService.getAllAnneesAcademiques().firstValueFrom(data => {
-  //     this.anneesAcademiques = data;
-  //   });
-  // }
+  readonly anneeAcademique = signal<any[]>([])
 
-  // // Méthode pour ajouter l'annonce
+  async ngOnInit() {
+    const data = await this.getAnneeAcademique()
+
+    this.anneeAcademique.set(data)
+  }
+
+
+  // Méthode pour ajouter l'annonce
   // ajouterAnnonce() {
   //   // Appeler le service pour ajouter l'annonce
-  //   this.annoncesService.createAnnonce(this.annonce).subscribe(
+  //   this.annoncesService.createAnnonce(this.annonce)(
   //     response => {
   //       console.log('Annonce ajoutée avec succès', response);
   //       // Rediriger l'utilisateur vers la liste des annonces ou vers une page de succès

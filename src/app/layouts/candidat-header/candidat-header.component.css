@@ -207,6 +207,9 @@
     }
 }
 
+.profilDrop a{
+    color: #fff !important;
+}
 .mobile-menu {
     opacity: 0;
     transform: translateY(-20px);

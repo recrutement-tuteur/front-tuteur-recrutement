@@ -2,11 +2,12 @@
 <div class="w-full" style="margin: auto;">
 
     <nav class="navbarMain navbar flex justify-between items-center px-6 py-1 text-white">
-        <div>
+        <a href="admin/dashboard">
             <img src="logo-UNCHK.png" alt="COLIER Logo" class="h-12">
-        </div>
+        </a>
 
-        <button class="menu-toggle" aria-label="Toggle menu" [attr.aria-expanded]="menuActive.toString()" (click)="toggleMenu()">
+        <button class="menu-toggle" aria-label="Toggle menu" [attr.aria-expanded]="menuActive.toString()"
+            (click)="toggleMenu()">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
@@ -14,23 +15,57 @@
 
         <ul class="menu">
             <div class="flex space-x-4">
-                <a href="#" class="hover:underline">Accueil</a>
-                <a href="#" class="hover:underline">Annonces de recrutement</a>
-                <a href="#" class="hover:underline">A Propos</a>
-                <a href="#" class="hover:underline">Contact</a>
+                <a href="admin/dashboard" class="hover:underline">Tableau de board</a>
+                <a href="admin/annonces" class="hover:underline">Annonces de recrutement</a>
+                <a href="admin/annee-academique" class="hover:underline">Années académiques </a>
+                <a href="admin/users" class="hover:underline">Utilisateurs</a>
             </div>
-            <div class="flex items-center space-x-3">
-                <a href="#" class="bg-blue-500 text-white px-4 py-2 text-sm rounded">Se connecter</a>
+
+            <div class="relative">
+                <button (click)="toggleDropdown()"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none">
+                    Profil
+                </button>
+
+                <!-- Menu déroulant -->
+                <div *ngIf="isDropdownOpen"
+                    class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
+                    <ul class="py-2">
+                        <li>
+                            <a href="admin/profil" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profil</a>
+                        </li>
+                        <li>
+                            <a href="admin/login" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Déconnexion</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </ul>
 
         <ul class="mobile-menu" [class.active]="menuActive" id="mobile-menu">
-            <a href="#" class="hover:underline">Accueil</a>
-            <a href="#" class="hover:underline">Annonces de recrutement</a>
-            <a href="#" class="hover:underline">A Propos</a>
-            <a href="#" class="hover:underline">Contact</a>
-            <div class="flex items-center space-x-3">
-                <a href="#" class="bg-blue-500 text-white px-4 py-2 text-sm rounded">Se connecter</a>
+            <a href="admin/dashboard" class="hover:underline">Tableau de board</a>
+            <a href="admin/annonces" class="hover:underline">Annonces de recrutement</a>
+            <a href="admin/annee-academique" class="hover:underline">Années académiques </a>
+            <a href="admin/users" class="hover:underline">Utilisateurs</a>
+            <!-- Menu déroulant -->
+            <div class="relative">
+                <button (click)="toggleDropdown()"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none">
+                    Profil
+                </button>
+
+                <!-- Menu déroulant -->
+                <div *ngIf="isDropdownOpen"
+                    class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
+                    <ul class="py-2">
+                        <li>
+                            <a href="admin/profil" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profil</a>
+                        </li>
+                        <li>
+                            <a href="admin/login" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Déconnexion</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </ul>
     </nav>

@@ -7,10 +7,10 @@
         <div class="bg-white shadow-md rounded-lg p-6">
             <div class="flex justify-between items-center mb-4">
 
-                <h2 class="text-xl font-semibold"> Années academiques </h2>
+                <h2 class="text-xl font-semibold"> Utilisateurs </h2>
 
                 <div class="flex space-x-2">
-                    <a href="admin/annee-academique/add" class="bg-blue-900 text-white px-4 py-2 rounded-md">Ajouter</a>
+                    <a href="admin/users/add" class="bg-blue-900 text-white px-4 py-2 rounded-md">Ajouter</a>
                 </div>
             </div>
 
@@ -22,16 +22,22 @@
                 <table class="w-full border-collapse border">
                     <thead>
                         <tr class="bg-gray-200 text-gray-700">
-                            <th class="p-3 border">Année academique</th>
-
+                            <th class="p-3 border">Nom</th>
+                            <th class="p-3 border">Prénom</th>
+                            <th class="p-3 border">E-mail</th>
+                            <th class="p-3 border">Téléphone</th>
+                            <th class="p-3 border">Rôle</th>
                             <th class="p-3 border">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Ligne 1 -->
                         <tr class="border">
-                            <td class="p-3 border">2025/2026</td>
-
+                            <td class="p-3 border">Bob</td>
+                            <td class="p-3 border">Williams</td>
+                            <td class="p-3 border">customer2&#64;example.com</td>
+                            <td class="p-3 border">2233445566</td>
+                            <td class="p-3 border">admin</td>
                             <td class="p-3 border flex space-x-2">
                                 <button class="text-blue-500 hover:text-blue-700 bg-blue-200 px-3 py-1 rounded-md">
                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -44,8 +50,11 @@
 
                         <!-- Ligne 2 -->
                         <tr class="border bg-gray-100">
-                            <td class="p-3 border">2026/2027</td>
-
+                            <td class="p-3 border">Alice</td>
+                            <td class="p-3 border">Johnson</td>
+                            <td class="p-3 border">customer1&#64;example.com</td>
+                            <td class="p-3 border">1122334455</td>
+                            <td class="p-3 border">candidat</td>
                             <td class="p-3 border flex space-x-2">
                                 <button class="text-blue-500 hover:text-blue-700 bg-blue-200 px-3 py-1 rounded-md">
                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -58,8 +67,11 @@
 
                         <!-- Ligne 3 -->
                         <tr class="border">
-                            <td class="p-3 border">2027/2028</td>
-
+                            <td class="p-3 border">Jane</td>
+                            <td class="p-3 border">Smith</td>
+                            <td class="p-3 border">customer&#64;example.com</td>
+                            <td class="p-3 border">0987654321</td>
+                            <td class="p-3 border">candidat</td>
                             <td class="p-3 border flex space-x-2">
                                 <button class="text-blue-500 hover:text-blue-700 bg-blue-200 px-3 py-1 rounded-md">
                                     <i class="fa-solid fa-pen-to-square"></i>
