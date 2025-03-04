@@ -8,14 +8,16 @@ import { firstValueFrom } from 'rxjs';
 export class AnnoncesService {
 
   private apiUrl = 'https://example.com/api/annonces';  // Remplace par l'URL de ton API
+  private token = localStorage.getItem('auth_token');
+
 
   constructor(private http: HttpClient) {}
 
   // Créer une annonce
   createAnnonce(annonceData: any): Promise<any> {
-    const token = localStorage.getItem('auth_token');
+    
     return firstValueFrom(this.http.post<any>(`${this.apiUrl}/create`, annonceData, {
-      headers: { 'Authorization': `Bearer ${token}` }
+      headers: { 'Authorization': `Bearer ${this.token}` }
     }));
   }
 
@@ -31,17 +33,17 @@ export class AnnoncesService {
 
   // Mettre à jour une annonce
   updateAnnonce(annonceId: number, annonceData: any): Promise<any> {
-    const token = localStorage.getItem('auth_token');
+    
     return firstValueFrom(this.http.put<any>(`${this.apiUrl}/update/${annonceId}`, annonceData, {
-      headers: { 'Authorization': `Bearer ${token}` }
+      headers: { 'Authorization': `Bearer ${this.token}` }
     }));
   }
 
   // Supprimer une annonce
   deleteAnnonce(annonceId: number): Promise<any> {
-    const token = localStorage.getItem('auth_token');
+    
     return firstValueFrom(this.http.delete<any>(`${this.apiUrl}/delete/${annonceId}`, {
-      headers: { 'Authorization': `Bearer ${token}` }
+      headers: { 'Authorization': `Bearer ${this.token}` }
     }));
   }
 

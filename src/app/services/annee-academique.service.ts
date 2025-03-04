@@ -8,14 +8,15 @@ import { firstValueFrom } from 'rxjs';
 export class AnneeAcademiqueService {
 
   private apiUrl = 'https://example.com/api/annees-academiques';  // Remplace par l'URL de ton API
+  private token = localStorage.getItem('auth_token');
 
   constructor(private http: HttpClient) {}
 
   // Créer une nouvelle année académique
   createAnneeAcademique(anneeData: any): Promise<any> {
-    const token = localStorage.getItem('auth_token');
+    
     return firstValueFrom(this.http.post<any>(`${this.apiUrl}/create`, anneeData, {
-      headers: { 'Authorization': `Bearer ${token}` }
+      headers: { 'Authorization': `Bearer ${this.token}` }
     }));
   }
 
@@ -31,17 +32,17 @@ export class AnneeAcademiqueService {
 
   // Mettre à jour une année académique
   updateAnneeAcademique(anneeId: number, anneeData: any): Promise<any> {
-    const token = localStorage.getItem('auth_token');
+    
     return firstValueFrom(this.http.put<any>(`${this.apiUrl}/update/${anneeId}`, anneeData, {
-      headers: { 'Authorization': `Bearer ${token}` }
+      headers: { 'Authorization': `Bearer ${this.token}` }
     }));
   }
 
   // Supprimer une année académique
   deleteAnneeAcademique(anneeId: number): Promise<any> {
-    const token = localStorage.getItem('auth_token');
+    
     return firstValueFrom(this.http.delete<any>(`${this.apiUrl}/delete/${anneeId}`, {
-      headers: { 'Authorization': `Bearer ${token}` }
+      headers: { 'Authorization': `Bearer ${this.token}` }
     }));
   }
 

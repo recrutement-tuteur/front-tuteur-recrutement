@@ -11,7 +11,7 @@ export class AuthService {
   // Stocker l'état de l'authentification dans un BehaviorSubject
   private authSubject = new BehaviorSubject<boolean>(this.isAuthenticated());
 
-  private apiUrl = 'http://localhost:8080/auth';  // Remplace par l'URL de ton API
+  private apiUrl = 'http://localhost:8080/api/auth';  // Remplace par l'URL de ton API
 
   constructor(private http: HttpClient) { }
 
@@ -42,11 +42,11 @@ export class AuthService {
     );
   }
 
-  // Méthode pour se connecter
-  logi(token: string) {
-    sessionStorage.setItem('authToken', token);
-    this.authSubject.next(true); // Met à jour l'état de l'authentification
-  }
+  // // Méthode pour se connecter
+  // login(token: string) {
+  //   sessionStorage.setItem('authToken', token);
+  //   this.authSubject.next(true); // Met à jour l'état de l'authentification
+  // }
 
   // Méthode pour se déconnecter
   logout() {

@@ -9,7 +9,7 @@ import { catchError, firstValueFrom, Observable } from 'rxjs';
 
 
 export class UsersService {
-  private apiUrl = 'http://localhost:8080/auth';  // Remplace par l'URL de ton API
+  private apiUrl = 'http://localhost:8080/api/auth';  // Remplace par l'URL de ton API
 
   constructor(private http: HttpClient) { }
 

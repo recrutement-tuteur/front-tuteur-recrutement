@@ -1,8 +1,25 @@
 # RecrutementTuteur
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.6.
 
-## Development server
+## Prérequis
+
+Avant de pouvoir démarrer ce projet, vous devez avoir installé les éléments suivants :
+
+- **Node.js** (version 14 ou supérieure recommandée)
+- **npm** (qui vient avec Node.js)
+- **Angular CLI** (vous pouvez l'installer globalement avec la commande `npm install -g @angular/cli`)
+
+## Cloner le dépôt
+
+Clonez ce dépôt en utilisant la commande suivante :
+
+```bash
+git clone https://github.com/recrutement-tuteur/front-tuteur-recrutement.git
+
+cd front-tuteur-recrutement
+npm install
+
+## Lancement du projet
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
