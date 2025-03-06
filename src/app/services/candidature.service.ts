@@ -7,7 +7,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class CandidatureService {
 
-  private apiUrl = 'https://example.com/api/candidatures';  // Remplace par l'URL de ton API
+  private apiUrl = 'http://localhost:8080/api/candidatures';  // Remplace par l'URL de ton API
 
   constructor(private http: HttpClient) {}
 

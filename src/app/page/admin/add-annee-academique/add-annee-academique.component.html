@@ -1,17 +1,25 @@
-<body class="bg-gray-100 flex items-center justify-center py-6">
+<div class="bg-gray-100 flex items-center justify-center py-6">
     <div class="w-[800px] bg-white rounded-lg shadow-lg p-8">
         <h1 class="text-2xl font-semibold text-gray-900 mb-6">Ajouter un utilisateur</h1>
 
-        <form>
+        <form (submit)="onSubmit()" #anneeForm="ngForm">
             <div class="mb-4">
-                <label class="block text-gray-700 font-medium mb-1">Année academique <span class="text-red-500">*</span></label>
-                <input type="text" placeholder="2025/2026" class="w-full px-4 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none">
+                <label class="block text-gray-700 font-medium mb-1">Libelle <span class="text-red-500">*</span></label>
+                <input type="text" placeholder="donne un libelle" id="libelle" [(ngModel)]="credentials().libelle" name="libelle" class="w-full px-4 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-medium mb-1">Date debut <span class="text-red-500">*</span></label>
+                <input type="date" placeholder="2025/2026" id="dateDebut" [(ngModel)]="credentials().dateDebut" name="dateDebut" class="w-full px-4 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-medium mb-1">Date fin <span class="text-red-500">*</span></label>
+                <input type="date" placeholder="2025/2026" id="dateFin" [(ngModel)]="credentials().dateFin" name="dateFin" class="w-full px-4 py-3 border border-gray-300 rounded-md bg-gray-100 focus:outline-none">
             </div>
 
 
-            <button type="submit" class="w-full bg-blue-700 text-white py-3 font-semibold rounded-md hover:bg-blue-800 transition">
+            <button type="submit" [disabled]="anneeForm.invalid" class="w-full bg-blue-700 text-white py-3 font-semibold rounded-md hover:bg-blue-800 transition">
                 AJOUTER
             </button>
         </form>
     </div>
-</body>
+</div>

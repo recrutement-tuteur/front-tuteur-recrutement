@@ -9,7 +9,7 @@
         </div>
 
         <!-- Contenu en deux colonnes -->
-        <div class="">
+        <form (submit)="onSubmit()" #annonceForm="ngForm" class="">
 
             <!-- Section Contenu -->
             <div class="bg-gray-100 p-4 rounded-lg">
@@ -18,57 +18,53 @@
                 <!-- Titre de l'Annonce -->
                 <div class="mb-4">
                     <label class="block font-medium text-gray-700">Titre de l'Annonce</label>
-                    <input type="text" placeholder="Exemple : Recrutement de Tuteurs pour l'Année 2025" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+                    <input type="text" id="titre" [(ngModel)]="credentials().titre" name="titre" placeholder="Exemple : Recrutement de Tuteurs pour l'Année 2025" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
                 </div>
 
                 <!-- Description de l'Annonce -->
                 <div class="mb-4">
                     <label class="block font-medium text-gray-700">Description de l'Annonce</label>
-                    <textarea placeholder="Exemple : Nous recherchons des étudiants pour le recrutement en tant que tuteurs..." class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"></textarea>
+                    <textarea id="description" [(ngModel)]="credentials().description" name="description" placeholder="Exemple : Nous recherchons des étudiants pour le recrutement en tant que tuteurs..." class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"></textarea>
                 </div>
 
-                <!-- Année Académique (Select avec options dynamiques) -->
+                <!-- Annee academique -->
                 <div class="mb-4">
                     <label class="block font-medium text-gray-700">Année Académique</label>
-                    <select class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+                    <select [(ngModel)]="credentials().anneeAcademique" name="anneeAcademique" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
                         <option value="">Sélectionnez une année académique</option>
-                        <!-- Options dynamiques (par exemple, alimentées par un service) -->
-                        <!-- <option *ngFor="let annee of anneesAcademiques" [value]="annee.id">{{ annee.annee }}</option> -->
-                         <option value="2022/2023">2026/2027</option>
-                         <option value="2022/2023">2025/2026</option>
-                         <option value="2022/2023">2024/2025</option>
+                        <option *ngFor="let annee of anneeAcademique()" [value]="annee.id">{{ annee.libelle }}</option>
                     </select>
                 </div>
 
                 <!-- Date de Début de l'Annonce -->
                 <div class="mb-4">
                     <label class="block font-medium text-gray-700">Date de Début</label>
-                    <input type="date" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+                    <input type="date" id="dateDebut" [(ngModel)]="credentials().dateDebut" name="dateDebut" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
                 </div>
 
                 <!-- Date de Fin de l'Annonce -->
                 <div class="mb-4">
                     <label class="block font-medium text-gray-700">Date de Fin</label>
-                    <input type="date" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+                    <input type="date" id="dateFin" [(ngModel)]="credentials().dateFin" name="dateFin" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
                 </div>
 
                 <!-- Statut de l'Annonce -->
                 <div class="mb-4">
                     <label class="block font-medium text-gray-700">Statut de l'Annonce</label>
-                    <select class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+                    <select id="statut" [(ngModel)]="credentials().statut" name="statut" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
                         <option value="active">Active</option>
                         <option value="inactive">Inactive</option>
                     </select>
                 </div>
 
                 <div>
-                    <button class="bg-green-500 text-white px-6 py-2 w-full rounded-md font-semibold hover:bg-green-600">
+                    <button type="submit" [disabled]="annonceForm.invalid" class="bg-green-500 text-white px-6 py-2 w-full rounded-md font-semibold hover:bg-green-600">
                         Ajouter l'Annonce
                     </button>
                 </div>
             </div>
 
-        </div>
+        </form>
 
     </div>
 

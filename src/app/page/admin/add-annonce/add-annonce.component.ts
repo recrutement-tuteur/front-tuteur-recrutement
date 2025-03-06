@@ -1,59 +1,73 @@
-import { Component, OnInit, signal } from '@angular/core';  // Service pour récupérer les années académiques
-import { Router } from '@angular/router';
-import { AnnoncesService } from '../../../services/annonces.service';
+import { Component, OnInit, signal } from '@angular/core';
 import { AnneeAcademiqueService } from '../../../services/annee-academique.service';
+import { AnnoncesService } from '../../../services/annonces.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-add-annonce',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, NgFor],
   templateUrl: './add-annonce.component.html',
   styleUrls: ['./add-annonce.component.css']
 })
 export class AddAnnonceComponent implements OnInit {
-
-  annonce = {
+  // Signal pour gérer les données du formulaire
+  credentials = signal({
     titre: '',
     description: '',
     anneeAcademique: '',  // ID de l'année académique
     dateDebut: '',
     dateFin: '',
     statut: 'active' // Statut par défaut
-  };
+  });
 
-  anneesAcademiques = []; // Liste des années académiques
+  readonly anneeAcademique = signal<any[]>([]);
 
   constructor(
-    private AnneeAcademiqueService: AnneeAcademiqueService,
+    private anneeAcademiqueService: AnneeAcademiqueService,
     private annoncesService: AnnoncesService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private toastr: ToastrService
   ) { }
 
   async getAnneeAcademique() {
-    return await this.AnneeAcademiqueService.getAllAnneesAcademiques()
+    return await this.anneeAcademiqueService.getAllAnneesAcademiques();
   }
-
-  readonly anneeAcademique = signal<any[]>([])
 
   async ngOnInit() {
-    const data = await this.getAnneeAcademique()
+    try {
+      const data = await this.getAnneeAcademique();
+      this.anneeAcademique.set(data);
+    } catch (error) {
+      console.error('Erreur lors de la récupération des années académiques:', error);
+      this.toastr.error('Erreur lors de la récupération des années académiques', 'Erreur');
+    }
 
-    this.anneeAcademique.set(data)
+    // Initialise les credentials
+    this.credentials.set({
+      titre: '',
+      description: '',
+      anneeAcademique: '',  // ID de l'année académique
+      dateDebut: '',
+      dateFin: '',
+      statut: 'active' // Statut par défaut
+    });
   }
 
-
-  // Méthode pour ajouter l'annonce
-  // ajouterAnnonce() {
-  //   // Appeler le service pour ajouter l'annonce
-  //   this.annoncesService.createAnnonce(this.annonce)(
-  //     response => {
-  //       console.log('Annonce ajoutée avec succès', response);
-  //       // Rediriger l'utilisateur vers la liste des annonces ou vers une page de succès
-  //       this.router.navigate(['/annonces']);
-  //     },
-  //     error => {
-  //       console.error('Erreur lors de l\'ajout de l\'annonce', error);
-  //     }
-  //   );
-  // }
+  onSubmit() {
+    const annonceData = this.credentials();
+    this.annoncesService.createAnnonce(annonceData).then(
+      (response) => {
+        this.toastr.success('Annonce ajoutée avec succès', 'Succès');
+        this.router.navigate(['/admin/annonces']);
+      },
+      (error) => {
+        this.toastr.error('Erreur lors de l\'ajout de l\'annonce', 'Erreur');
+      }
+    );
+  }
 }

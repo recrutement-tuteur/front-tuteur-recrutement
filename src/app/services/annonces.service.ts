@@ -7,7 +7,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class AnnoncesService {
 
-  private apiUrl = 'https://example.com/api/annonces';  // Remplace par l'URL de ton API
+  private apiUrl = 'http://localhost:8080/api/admin/annonces';  // Remplace par l'URL de ton API
   private token = localStorage.getItem('auth_token');
 
 
@@ -16,7 +16,7 @@ export class AnnoncesService {
   // Créer une annonce
   createAnnonce(annonceData: any): Promise<any> {
     
-    return firstValueFrom(this.http.post<any>(`${this.apiUrl}/create`, annonceData, {
+    return firstValueFrom(this.http.post<any>(`${this.apiUrl}`, annonceData, {
       headers: { 'Authorization': `Bearer ${this.token}` }
     }));
   }
